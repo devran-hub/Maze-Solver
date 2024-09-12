@@ -35,12 +35,13 @@ void setup() {
 }
 
 void loop() {
-  if (sonarFront.ping_cm() > WALL_DISTANCE) {
+  if (sonarRight.ping_cm() > WALL_DISTANCE) turnRight();
+  else if (sonarFront.ping_cm() > WALL_DISTANCE) {
     moveForward();
     if (sonarRight.ping_cm() < WALL_DISTANCE) turnLeft();
     else if (sonarLeft.ping_cm() < WALL_DISTANCE) turnRight();
 
-  };
+  }
     else {
     turnRight();
   };
