@@ -43,7 +43,7 @@ void loop() {
 
   }
     else {
-    turnRight();
+    turnLeft();
   };
 }
 
