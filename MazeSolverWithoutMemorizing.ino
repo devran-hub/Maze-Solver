@@ -35,39 +35,60 @@ void setup() {
 }
 
 void loop() {
-  if (sonarRight.ping_cm() > 5) turnRight();
-  else if (sonarFront.ping_cm() > 1) {
-    moveForward();
-
-
+  while(sonarRight.ping_cm() < 5){
+    if(sonarFront.ping_cm() > 2){
+      moveForward();
+    }else if(sonarLeft.ping_cm() > 5){
+      stopRobot();
+      turnLeft();
+    }else {
+      stopRobot();
+      turn180();
+    }
   }
-    else {
-    turnLeft();
-  };
+  stopRobot();
+  turnRight();
 }
 
 void moveForward() {
   digitalWrite(MOTOR_LEFT_FORWARD, HIGH);
   digitalWrite(MOTOR_RIGHT_FORWARD, HIGH);
-  delay(500);  // Move for a fixed duration, adjust timing
+}
+
+void stopRobot() {
   digitalWrite(MOTOR_LEFT_FORWARD, LOW);
   digitalWrite(MOTOR_RIGHT_FORWARD, LOW);
 }
 
-// Turn the robot left
 void turnLeft() {
   digitalWrite(MOTOR_LEFT_BACKWARD, HIGH);
   digitalWrite(MOTOR_RIGHT_FORWARD, HIGH);
   delay(400);  // Turn for a fixed duration
   digitalWrite(MOTOR_LEFT_BACKWARD, LOW);
+  digitalWrite(MOTOR_LEFT_FORWARD, HIGH);
+  delay(400);
   digitalWrite(MOTOR_RIGHT_FORWARD, LOW);
+  digitalWrite(MOTOR_LEFT_FORWARD, LOW);
 }
 
-// Turn the robot right
 void turnRight() {
   digitalWrite(MOTOR_LEFT_FORWARD, HIGH);
   digitalWrite(MOTOR_RIGHT_BACKWARD, HIGH);
   delay(400);  // Turn for a fixed duration
-  digitalWrite(MOTOR_LEFT_FORWARD, LOW);
+  digitalWrite(MOTOR_RIGHT_FORWARD, HIGH);
   digitalWrite(MOTOR_RIGHT_BACKWARD, LOW);
+  delay(400);
+  digitalWrite(MOTOR_LEFT_FORWARD, LOW);
+  digitalWrite(MOTOR_RIGHT_FORWARD, LOW);
+}
+
+void turn180() {
+  digitalWrite(MOTOR_LEFT_BACKWARD, HIGH);
+  digitalWrite(MOTOR_RIGHT_FORWARD, HIGH);
+  delay(800);  // Turn for a fixed duration
+  digitalWrite(MOTOR_LEFT_BACKWARD, LOW);
+  digitalWrite(MOTOR_LEFT_FORWARD, HIGH);
+  delay(400);
+  digitalWrite(MOTOR_RIGHT_FORWARD, LOW);
+  digitalWrite(MOTOR_LEFT_FORWARD, LOW);
 }
