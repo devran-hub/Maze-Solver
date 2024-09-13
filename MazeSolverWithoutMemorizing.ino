@@ -1,10 +1,10 @@
 #include <NewPing.h>
 
 // Define pins for the HC-SR04 sensors
-#define TRIG_PIN_FRONT 7
-#define ECHO_PIN_FRONT 6
-#define TRIG_PIN_LEFT 5
-#define ECHO_PIN_LEFT 4
+#define TRIG_PIN_FRONT 8
+#define ECHO_PIN_FRONT 9
+#define TRIG_PIN_LEFT 10
+#define ECHO_PIN_LEFT 11
 #define TRIG_PIN_RIGHT 2
 #define ECHO_PIN_RIGHT 7
 
@@ -15,11 +15,8 @@
 #define MOTOR_RIGHT_BACKWARD 4
 
 
-// White circle detection sensor
-
-
 // Define maximum distance in cm for walls
-#define WALL_DISTANCE 1
+#define WALL_DISTANCE 5
 
 NewPing sonarFront(TRIG_PIN_FRONT, ECHO_PIN_FRONT);
 NewPing sonarLeft(TRIG_PIN_LEFT, ECHO_PIN_LEFT);
@@ -35,10 +32,10 @@ void setup() {
 }
 
 void loop() {
-  while(sonarRight.ping_cm() < 5){
+  while(sonarRight.ping_cm() < WALL_DISTANCE && sonarRight.ping_cm() > 0){
     if(sonarFront.ping_cm() > 2){
       moveForward();
-    }else if(sonarLeft.ping_cm() > 5){
+    }else if(sonarLeft.ping_cm() > WALL_DISTANCE){
       stopRobot();
       turnLeft();
     }else {
