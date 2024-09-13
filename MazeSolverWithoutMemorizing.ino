@@ -5,14 +5,14 @@
 #define ECHO_PIN_FRONT 6
 #define TRIG_PIN_LEFT 5
 #define ECHO_PIN_LEFT 4
-#define TRIG_PIN_RIGHT 3
-#define ECHO_PIN_RIGHT 2
+#define TRIG_PIN_RIGHT 2
+#define ECHO_PIN_RIGHT 7
 
 // Motor control pins
-#define MOTOR_LEFT_FORWARD 9
-#define MOTOR_LEFT_BACKWARD 8
-#define MOTOR_RIGHT_FORWARD 11
-#define MOTOR_RIGHT_BACKWARD 10
+#define MOTOR_LEFT_FORWARD 6
+#define MOTOR_LEFT_BACKWARD 5
+#define MOTOR_RIGHT_FORWARD 3
+#define MOTOR_RIGHT_BACKWARD 4
 
 
 // White circle detection sensor
