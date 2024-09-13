@@ -5,15 +5,15 @@
 #define ECHO_PIN_LEFT 3
 #define TRIG_PIN_FRONT 4
 #define ECHO_PIN_FRONT 5
-#define TRIG_PIN_RIGHT 6
+#define TRIG_PIN_RIGHT 2
 #define ECHO_PIN_RIGHT 7
 #define MAX_DISTANCE 200 // Maximum distance to measure (in cm)
 
 // Motor control pins
-#define MOTOR_LEFT_FORWARD 8
-#define MOTOR_LEFT_BACKWARD 9
-#define MOTOR_RIGHT_FORWARD 10
-#define MOTOR_RIGHT_BACKWARD 11
+#define MOTOR_LEFT_FORWARD 6
+#define MOTOR_LEFT_BACKWARD 5
+#define MOTOR_RIGHT_FORWARD 3
+#define MOTOR_RIGHT_BACKWARD 4
 
 NewPing sonarLeft(TRIG_PIN_LEFT, ECHO_PIN_LEFT, MAX_DISTANCE);
 NewPing sonarFront(TRIG_PIN_FRONT, ECHO_PIN_FRONT, MAX_DISTANCE);
