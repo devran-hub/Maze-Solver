@@ -9,6 +9,8 @@
 #define ECHO_PIN_RIGHT 7
 
 // Motor control pins
+#define ENL 12 // For Left Motor
+#define ENR 13 //For Right Motor
 #define MOTOR_LEFT_FORWARD 6
 #define MOTOR_LEFT_BACKWARD 5
 #define MOTOR_RIGHT_FORWARD 3
@@ -32,6 +34,9 @@ void setup() {
 }
 
 void loop() {
+  analogWrite(ENR,255);
+  analogWrite(ENR,255);
+
   while(sonarRight.ping_cm() < WALL_DISTANCE && sonarRight.ping_cm() > 0){
     if(sonarFront.ping_cm() > 2){
       moveForward();
@@ -50,6 +55,11 @@ void loop() {
 void moveForward() {
   digitalWrite(MOTOR_LEFT_FORWARD, HIGH);
   digitalWrite(MOTOR_RIGHT_FORWARD, HIGH);
+  
+  //distances has been rounded to obtain smoother movement.
+  if((int)sonarRight.ping_cm()>(int)sonarLeft.ping_cm()) analogWrite(ENR,150); //We don't need to specifiy speed of the other motor because we already define it at at the beginning of the loop
+  else if((int)sonarLeft.ping_cm()>(int)sonarRight.ping_cm())analogWrite(ENR,150);
+  delay(200);
 }
 
 void stopRobot() {
