@@ -1,10 +1,10 @@
 #include <NewPing.h>
 
 // Define pins for the HC-SR04 sensors
-#define TRIG_PIN_FRONT 8
-#define ECHO_PIN_FRONT 9
-#define TRIG_PIN_LEFT 10
-#define ECHO_PIN_LEFT 11
+#define TRIG_PIN_FRONT 9
+#define ECHO_PIN_FRONT 8
+#define TRIG_PIN_LEFT 11
+#define ECHO_PIN_LEFT 10
 #define TRIG_PIN_RIGHT 2
 #define ECHO_PIN_RIGHT 7
 
