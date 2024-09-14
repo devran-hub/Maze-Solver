@@ -80,9 +80,10 @@ void turnRight() {
 }
 
 void turn180() {
+  while(sonarFront.ping_cm() < 2){
   digitalWrite(MOTOR_LEFT_BACKWARD, HIGH);
   digitalWrite(MOTOR_RIGHT_FORWARD, HIGH);
-  delay(800);  // Turn for a fixed duration
+  }
   digitalWrite(MOTOR_LEFT_BACKWARD, LOW);
   digitalWrite(MOTOR_LEFT_FORWARD, HIGH);
   delay(400);
