@@ -80,7 +80,7 @@ void turnRight() {
 }
 
 void turn180() {
-  while(sonarFront.ping_cm() < 2){
+  while(sonarFront.ping_cm() < 17){
   digitalWrite(MOTOR_LEFT_BACKWARD, HIGH);
   digitalWrite(MOTOR_RIGHT_FORWARD, HIGH);
   }
