@@ -10,11 +10,15 @@
 #define in4 5
 #define ENL 12
 #define ENR 13
-
 #define DIS 5
 
+
+String path = " ";
 void setup() {
+
   pinMode(trigPin1, OUTPUT);
+  pinMode(ENL, OUTPUT);
+  pinMode(ENR, OUTPUT);
   pinMode(echoPin1, INPUT);
   pinMode(trigPin2, OUTPUT);
   pinMode(echoPin2, INPUT);
@@ -29,16 +33,11 @@ void loop() {
   analogWrite(ENR, 255);
   analogWrite(ENL, 255);
 
-  if (FrontSensor() > 17 && RightSensor() > DIS && LeftSensor() > DIS) {
-    turn_right();  // then turn  right and then forward
+  if (FrontSensor() > 17 && RightSensor() > DIS && LeftSensor() > DIS) {  //Cross junction
+    turn_right();                                                         // then turn  right and then forward
     delay(500);
-    forward();
-  }
-  //else if ( FrontSensor () > DIS && RightSensor () <  DIS && LeftSensor ()< DIS)
-  //{
-  //forward();
-  //}
-  else if (FrontSensor() < 17 && RightSensor() < DIS && LeftSensor() < DIS)  // obstacle infront of all 3  sides
+    while (RightSensor() > DIS || LeftSensor() > DIS) forward();
+  } else if (FrontSensor() < 17 && RightSensor() < DIS && LeftSensor() < DIS)  // obstacle infront of all 3  sides
   {
     reverse();
     delay(500);
@@ -48,29 +47,37 @@ void loop() {
       turn_right();
 
     delay(200);
+    path += "B";
   } else if (FrontSensor() < 18 && RightSensor() < DIS && LeftSensor() > DIS)  // obstacle on right and front sides
   {
-    turn_left();
+    turn_left();  // turn left side
     delay(500);
-    forward();                                                                 // turn left  side
+    while (RightSensor() > DIS || LeftSensor() > DIS) forward();
+    path += "L";
   } else if (FrontSensor() < 17 && RightSensor() > DIS && LeftSensor() < DIS)  // obstacle on left and front sides
   {
-    turn_right();
+    turn_right();  // turn right side
     delay(500);
-    forward();                                                                 // turn right side
+    while (RightSensor() > DIS || LeftSensor() > DIS) forward();
+    path += "R";
+
   } else if (FrontSensor() < 17 && RightSensor() > DIS && LeftSensor() > DIS)  // obstacle  on front sides
   {
-    turn_right();
+    turn_right();  // then turn right
     delay(500);
-    forward();                                                                 // then turn right  //********************
+    while (RightSensor() > DIS || LeftSensor() > DIS) forward();
+    path += "R";
+
   } else if (FrontSensor() > 17 && RightSensor() > DIS && LeftSensor() < DIS)  // obstacle on left sides
   {
     turn_right();  // then turn  right and then forward
     delay(500);
-    forward();
+    while (RightSensor() > DIS || LeftSensor() > DIS) forward();
+    path += "R";
   } else if (FrontSensor() > 17 && RightSensor() < DIS && LeftSensor() > DIS)  // obstacle on right sides
   {
-    forward();
+    while (RightSensor() > DIS || LeftSensor() > DIS) forward();
+    path += "S";
   } else {
     forward();
   }
