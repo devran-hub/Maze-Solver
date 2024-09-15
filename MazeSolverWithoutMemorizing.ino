@@ -35,7 +35,7 @@ void setup() {
 
 void loop() {
   analogWrite(ENR,255);
-  analogWrite(ENR,255);
+  analogWrite(ENL,255);
 
   while(sonarRight.ping_cm() < WALL_DISTANCE && sonarRight.ping_cm() > 0){
     if(sonarFront.ping_cm() > 2){
@@ -58,7 +58,7 @@ void moveForward() {
   
   //distances has been rounded to obtain smoother movement.
   if((int)sonarRight.ping_cm()>(int)sonarLeft.ping_cm()) analogWrite(ENR,150); //We don't need to specifiy speed of the other motor because we already define it at at the beginning of the loop
-  else if((int)sonarLeft.ping_cm()>(int)sonarRight.ping_cm())analogWrite(ENR,150);
+  else if((int)sonarLeft.ping_cm()>(int)sonarRight.ping_cm())analogWrite(ENL,150);
   delay(200);
 }
 
