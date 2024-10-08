@@ -1,20 +1,20 @@
 #include <NewPing.h>
 
 // Define pins for the HC-SR04 sensors
-#define TRIG_PIN_FRONT 9
-#define ECHO_PIN_FRONT 8
-#define TRIG_PIN_LEFT 11
-#define ECHO_PIN_LEFT 10
+#define TRIG_PIN_FRONT 5
+#define ECHO_PIN_FRONT 4
+#define TRIG_PIN_LEFT 12
+#define ECHO_PIN_LEFT 13
 #define TRIG_PIN_RIGHT 2
-#define ECHO_PIN_RIGHT 7
+#define ECHO_PIN_RIGHT 3
 
 // Motor control pins
-#define ENL 12 // For Left Motor
-#define ENR 13 //For Right Motor
-#define MOTOR_LEFT_FORWARD 6
-#define MOTOR_LEFT_BACKWARD 5
-#define MOTOR_RIGHT_FORWARD 3
-#define MOTOR_RIGHT_BACKWARD 4
+#define MOTOR_LEFT_FORWARD 9
+#define MOTOR_LEFT_BACKWARD 10
+#define MOTOR_RIGHT_FORWARD 7
+#define MOTOR_RIGHT_BACKWARD 8
+#define EnA 11
+#define EnB 6
 
 
 // Define maximum distance in cm for walls
